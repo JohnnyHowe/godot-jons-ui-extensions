@@ -12,7 +12,7 @@ func _process(_delta):
 	if not _other:
 		return
 
-	position = _other.position
+	global_position = _other.global_position
 
 	if _size:
 		size = _other.size

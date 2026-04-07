@@ -1,0 +1,91 @@
+[gd_scene format=3 uid="uid://s7o8ex6h8ny6"]
+
+[ext_resource type="Theme" uid="uid://dkylrydrjuxr0" path="res://addons/jons-ui-extensions/example_theme.tres" id="1_f463f"]
+[ext_resource type="Script" uid="uid://bkha3a6bqm3ab" path="res://addons/jons-ui-extensions/int_edit/src/int_edit.gd" id="1_qp2k5"]
+[ext_resource type="Script" uid="uid://c703bec533iib" path="res://addons/jons-ui-extensions/int_edit/example/signals_text.gd" id="2_uv4gd"]
+
+[node name="Example" type="MarginContainer" unique_id=587034517]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_f463f")
+
+[node name="Content" type="VBoxContainer" parent="." unique_id=1001807042]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="HelpBox" type="MarginContainer" parent="Content" unique_id=2025336144]
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="ColorRect" type="ColorRect" parent="Content/HelpBox" unique_id=950351968]
+z_index = -1
+layout_mode = 2
+color = Color(1.9492954e-06, 0.59182423, 9.62615e-07, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="Content/HelpBox" unique_id=1336650196]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HelpText" type="RichTextLabel" parent="Content/HelpBox/MarginContainer" unique_id=1005564462]
+z_index = 1
+clip_contents = false
+layout_mode = 2
+bbcode_enabled = true
+text = "Edit the [b]IntEdit[/b] below and see the signals emitted."
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="IntEdit" type="Control" parent="Content" unique_id=652267243]
+custom_minimum_size = Vector2(68.5, 31)
+layout_mode = 2
+script = ExtResource("1_qp2k5")
+value = 57
+metadata/_custom_type_script = "uid://bkha3a6bqm3ab"
+
+[node name="SignalsDisplay" type="MarginContainer" parent="Content" unique_id=678246408]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="ColorRect" type="ColorRect" parent="Content/SignalsDisplay" unique_id=1598401650]
+layout_mode = 2
+color = Color(0.13319641, 0.13319641, 0.13319635, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="Content/SignalsDisplay" unique_id=1536878760]
+layout_mode = 2
+
+[node name="VboxContainer" type="VBoxContainer" parent="Content/SignalsDisplay/MarginContainer" unique_id=1521646084]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Header" type="Label" parent="Content/SignalsDisplay/MarginContainer/VboxContainer" unique_id=427401530]
+layout_mode = 2
+text = "Signals"
+
+[node name="ColorRect" type="ColorRect" parent="Content/SignalsDisplay/MarginContainer/VboxContainer" unique_id=1627378327]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+color = Color(1, 1, 1, 0.45882353)
+
+[node name="Signals" type="RichTextLabel" parent="Content/SignalsDisplay/MarginContainer/VboxContainer" unique_id=914082887]
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+script = ExtResource("2_uv4gd")
+time_color = Color(0.585062, 0.585062, 0.5850621, 1)
+signal_color = Color(0.41981336, 0.41981307, 0.4198131, 1)
+
+[connection signal="number_changed" from="Content/IntEdit" to="Content/SignalsDisplay/MarginContainer/VboxContainer/Signals" method="_on_int_edit_number_changed"]
