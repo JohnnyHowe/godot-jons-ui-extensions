@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://dr1mqcg81r3ok"]
+
+[ext_resource type="Script" uid="uid://cgp31gubmdold" path="res://addons/jons-ui-extensions/control_size_copier/src/control_size_copier.gd" id="1_1qnqg"]
+[ext_resource type="Script" uid="uid://b4gip3a8wcv7c" path="res://addons/jons-ui-extensions/outline_rect/src/fancy_outline_rect.gd" id="2_dftsl"]
+
+[node name="Example" type="Control" unique_id=1438589609]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Help" type="RichTextLabel" parent="." unique_id=1713572951]
+z_index = 1
+clip_contents = false
+layout_mode = 0
+offset_left = 23.0
+offset_top = 25.0
+offset_right = 354.0
+offset_bottom = 71.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+bbcode_enabled = true
+text = "[b]In Edit Mode[/b]
+Try moving [b]ToCopy[/b]
+
+[b]ToCopy[/b] node is just a white color rect.
+[b]ControlSizeCopier[/b] node target is [b]ToCopy[/b]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="Help" unique_id=1409482046]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = -10
+theme_override_constants/margin_top = -10
+theme_override_constants/margin_right = -10
+theme_override_constants/margin_bottom = -10
+
+[node name="ColorRect" type="ColorRect" parent="Help/MarginContainer" unique_id=1821358796]
+z_index = -1
+layout_mode = 2
+color = Color(1.9492954e-06, 0.59182423, 9.62615e-07, 1)
+
+[node name="ControlSizeCopier" type="Control" parent="." unique_id=849262270 node_paths=PackedStringArray("_other")]
+z_index = 1
+anchors_preset = 0
+offset_left = 514.0
+offset_top = 338.0
+offset_right = 855.0
+offset_bottom = 585.0
+script = ExtResource("1_1qnqg")
+_other = NodePath("../ToCopy")
+metadata/_custom_type_script = "uid://cgp31gubmdold"
+
+[node name="FancyOutlineRect" type="Control" parent="ControlSizeCopier" unique_id=1244022844]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_dftsl")
+dash_size = 4.0
+gap_size = 2.0
+scroll_speed = 10.0
+metadata/_custom_type_script = "uid://b4gip3a8wcv7c"
+
+[node name="ToCopy" type="ColorRect" parent="." unique_id=456178490]
+layout_mode = 0
+offset_left = 514.0
+offset_top = 338.0
+offset_right = 855.0
+offset_bottom = 585.0
