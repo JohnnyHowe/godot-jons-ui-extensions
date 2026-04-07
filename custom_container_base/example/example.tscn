@@ -1,0 +1,100 @@
+[gd_scene format=3 uid="uid://bxk4x2w3dpygx"]
+
+[ext_resource type="Script" uid="uid://babpkb8oedumg" path="res://addons/jons-ui-extensions/custom_container_base/example/random_placement_container.gd" id="1_ekb5c"]
+[ext_resource type="Script" uid="uid://bl5b46prsyqq3" path="res://addons/jons-ui-extensions/custom_container_base/example/example_item.gd" id="2_fnahm"]
+
+[node name="Example" type="Control" unique_id=596824854]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Help" type="RichTextLabel" parent="." unique_id=766182415]
+z_index = 1
+clip_contents = false
+layout_mode = 0
+offset_left = 23.0
+offset_top = 25.0
+offset_right = 279.0
+offset_bottom = 25.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+bbcode_enabled = true
+text = "The [b]\"Container\"[/b] node has the [b]random_placement_container[/b] script.
+
+[b]random_placement_container[/b] inherits from [b]CustomContainerBase[/b] to handle the boring stuff.
+So all it needs to do is say how children are arranged.
+
+Adding or deleting children of [b]Container[/b] will cause [b]random_placement_container[/b] to update."
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="Help" unique_id=1400185093]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = -10
+theme_override_constants/margin_top = -10
+theme_override_constants/margin_right = -10
+theme_override_constants/margin_bottom = -10
+
+[node name="ColorRect" type="ColorRect" parent="Help/MarginContainer" unique_id=805004223]
+z_index = -1
+layout_mode = 2
+color = Color(1.9492954e-06, 0.59182423, 9.62615e-07, 1)
+
+[node name="Container" type="Container" parent="." unique_id=182084417]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ekb5c")
+
+[node name="ExampleItem" type="Control" parent="Container" unique_id=1920529635]
+layout_mode = 2
+script = ExtResource("2_fnahm")
+fill_color = Color(0.20227185, 0.1253594, 0.35858086, 0.5)
+metadata/_custom_type_script = "uid://dp7w3q5yfxq5k"
+
+[node name="ExampleItem2" type="Control" parent="Container" unique_id=1367186360]
+layout_mode = 2
+script = ExtResource("2_fnahm")
+fill_color = Color(0.3295591, 0.27659485, 0.5098096, 0.5)
+metadata/_custom_type_script = "uid://dp7w3q5yfxq5k"
+
+[node name="ExampleItem3" type="Control" parent="Container" unique_id=9512404]
+layout_mode = 2
+script = ExtResource("2_fnahm")
+fill_color = Color(0.70288235, 0.5193673, 0.21347241, 0.5)
+metadata/_custom_type_script = "uid://dp7w3q5yfxq5k"
+
+[node name="ExampleItem4" type="Control" parent="Container" unique_id=149310649]
+layout_mode = 2
+script = ExtResource("2_fnahm")
+fill_color = Color(0.49949113, 0.7149251, 0.33708316, 0.5)
+metadata/_custom_type_script = "uid://dp7w3q5yfxq5k"
+
+[node name="ExampleItem5" type="Control" parent="Container" unique_id=1059782162]
+layout_mode = 2
+script = ExtResource("2_fnahm")
+fill_color = Color(0.900177, 0.28334168, 0.7310922, 0.5)
+metadata/_custom_type_script = "uid://dp7w3q5yfxq5k"
+
+[node name="ExampleItem6" type="Control" parent="Container" unique_id=176412491]
+layout_mode = 2
+script = ExtResource("2_fnahm")
+fill_color = Color(0.560776, 0.835052, 0.28109178, 0.5)
+metadata/_custom_type_script = "uid://dp7w3q5yfxq5k"
+
+[node name="ExampleItem7" type="Control" parent="Container" unique_id=711641575]
+layout_mode = 2
+script = ExtResource("2_fnahm")
+fill_color = Color(0.90894866, 0.98167783, 0.7995533, 0.5)
+metadata/_custom_type_script = "uid://dp7w3q5yfxq5k"
