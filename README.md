@@ -10,3 +10,7 @@ git submodule add https://github.com/JohnnyHowe/godot-jons-ui-extensions godot/a
 ```
 
 # Dependencies
+## gdscript-script-test-runner
+This is purely for testing. If you don't care, just delete the "tests" folder.
+
+https://github.com/JohnnyHowe/gdscript-script-test-runner
