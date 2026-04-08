@@ -25,6 +25,10 @@ var _line_edit: LineEdit:
 		return _line_edit
 
 
+func _enter_tree() -> void:
+	_text_edited()
+
+
 func _create_internal_ui() -> void:
 	_margin_container = MarginContainer.new()
 	_margin_container.add_theme_constant_override("margin_left", 0)
