@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://r0mc6bsuymrc"]
 
-[ext_resource type="Script" uid="uid://dp7w3q5yfxq5k" path="res://addons/jons-ui-extensions/outline_rect/src/outline_rect.gd" id="1_2haen"]
+[ext_resource type="Script" path="res://addons/jons-ui-extensions/outline_rect/src/outline_rect.gd" id="1_2haen"]
 [ext_resource type="Script" uid="uid://dwb2vaj7m20xx" path="res://addons/jons-ui-extensions/outline_rect/example/help.gd" id="1_i5aew"]
-[ext_resource type="Script" uid="uid://b4gip3a8wcv7c" path="res://addons/jons-ui-extensions/outline_rect/src/fancy_outline_rect.gd" id="2_ewg26"]
+[ext_resource type="Script" path="res://addons/jons-ui-extensions/outline_rect/src/fancy_outline_rect.gd" id="2_ewg26"]
 
 [node name="Example" type="ColorRect" unique_id=760407173]
 anchors_preset = 15
@@ -22,7 +22,7 @@ offset_left = 23.0
 offset_top = 25.0
 offset_right = 279.0
 offset_bottom = 72.66667
-rotation = 0.010368708
+rotation = -0.0069711935
 pivot_offset_ratio = Vector2(0.5, 0.5)
 bbcode_enabled = true
 text = "[b]In Edit mode[/b]
