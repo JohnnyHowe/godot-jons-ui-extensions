@@ -36,6 +36,12 @@ An input field that only allows integers
 
 ![clip](docs/images/int-edit.gif)
 
+## `JuicyVisibilityContainer`
+
+A margin container that scales itself up and down with springs.
+
+![clip](docs/images/juicy-visibility-container.gif)
+
 ## `CustomContainerBase`
 Abstract class that makes implementing new containers easy.
 Handles listening for changes and getting all visible children.

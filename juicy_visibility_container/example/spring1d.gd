@@ -1,6 +1,9 @@
 class_name Spring1D
 extends RefCounted
 
+const MAX_DELTA: float = 1.0 / 10
+const MIN_DELTA: float = 1.0 / 1000
+
 var position := 0.0
 var velocity := 0.0
 var target := 0.0
@@ -22,6 +25,7 @@ func _init(
 
 
 func step(delta: float) -> float:
+	delta = clamp(delta, MIN_DELTA, MAX_DELTA)
 	var force = (target - position) * stiffness
 	var damp = - velocity * damping
 	var acceleration = force + damp

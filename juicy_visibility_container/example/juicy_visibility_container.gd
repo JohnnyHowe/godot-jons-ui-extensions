@@ -18,7 +18,14 @@ func set_target_visible(target_visible: bool) -> void:
 
 func _process(delta: float) -> void:
 	_update_spring(delta)
+	pivot_offset_ratio = Vector2.ONE / 2
 	scale = Vector2.ONE * _spring.position
+
+	for child in get_children():
+		if not child is Control or not child.visible:
+			continue
+		child.position = Vector2.ZERO
+		child.size = size
 
 
 func _update_spring(delta: float) -> void:
