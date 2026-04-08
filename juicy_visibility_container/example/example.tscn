@@ -1,8 +1,7 @@
 [gd_scene format=3 uid="uid://btmy0qpuo17g8"]
 
-[ext_resource type="Script" uid="uid://cgp31gubmdold" path="res://addons/jons-ui-extensions/control_size_copier/src/control_size_copier.gd" id="1_g1j20"]
 [ext_resource type="Script" uid="uid://caqled5i2qk0b" path="res://addons/jons-ui-extensions/outline_rect/src/debug_outline_rect.gd" id="3_j578i"]
-[ext_resource type="Script" uid="uid://c50aw716ltgm0" path="res://addons/jons-ui-extensions/juicy_visibility_container/example/juicy_visibility_container.gd" id="4_apt3f"]
+[ext_resource type="Script" uid="uid://cu8i4xogdkhej" path="res://addons/jons-ui-extensions/juicy_visibility_container/example/juicy_visibility_container.gd" id="4_apt3f"]
 
 [node name="Example" type="Control" unique_id=1506794042]
 layout_mode = 3
@@ -12,56 +11,21 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ControlSizeCopier" type="Control" parent="." unique_id=968533441 node_paths=PackedStringArray("_other")]
-anchors_preset = 0
-offset_left = -0.00012207031
-offset_top = -6.1035156e-05
-offset_right = 1919.9999
-offset_bottom = 1080.0
-scale = Vector2(1.0000001, 1.0000001)
-script = ExtResource("1_g1j20")
-_other = NodePath("../JuicyContainer")
-metadata/_custom_type_script = "uid://cgp31gubmdold"
-
-[node name="DebugOutlineRect" type="Control" parent="ControlSizeCopier" unique_id=1545063759]
+[node name="JuicyVisibilityContainer" type="MarginContainer" parent="." unique_id=170171957]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("3_j578i")
-outline_color = Color(0.16181748, 0.10028752, 0.2868647, 1)
-fill_color = Color(0.32945397, 0.28023002, 0.42949176, 1)
-metadata/_custom_type_script = "uid://caqled5i2qk0b"
-
-[node name="JuicyContainer" type="MarginContainer" parent="." unique_id=1896305760]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(1.0000001, 1.0000001)
+scale = Vector2(0.98456216, 0.98456216)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 script = ExtResource("4_apt3f")
-respond_to_child_visibility = true
-spring_stiffness = 5000.0
-spring_damping = 75.0
-metadata/_custom_type_script = "uid://c50aw716ltgm0"
+metadata/_custom_type_script = "uid://cu8i4xogdkhej"
 
-[node name="DebugOutlineRect" type="Control" parent="JuicyContainer" unique_id=1120961398]
-custom_minimum_size = Vector2(120, 100)
+[node name="DebugOutlineRect" type="Control" parent="JuicyVisibilityContainer" unique_id=673068727]
 layout_mode = 2
 script = ExtResource("3_j578i")
 outline_color = Color(0.16181748, 0.10028752, 0.2868647, 1)
 fill_color = Color(0.32945397, 0.28023002, 0.42949176, 1)
-metadata/_custom_type_script = "uid://caqled5i2qk0b"
-
-[node name="DebugOutlineRect2" type="Control" parent="JuicyContainer" unique_id=295685179]
-custom_minimum_size = Vector2(120, 100)
-layout_mode = 2
-script = ExtResource("3_j578i")
-outline_color = Color(0.2636473, 0.22127588, 0.4078477, 1)
-fill_color = Color(0.41091782, 0.37702072, 0.52627814, 1)
 metadata/_custom_type_script = "uid://caqled5i2qk0b"
