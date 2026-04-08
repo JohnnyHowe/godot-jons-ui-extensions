@@ -1,0 +1,128 @@
+[gd_scene format=3 uid="uid://btmy0qpuo17g8"]
+
+[ext_resource type="Script" uid="uid://caqled5i2qk0b" path="res://addons/jons-ui-extensions/outline_rect/src/debug_outline_rect.gd" id="3_j578i"]
+[ext_resource type="Script" uid="uid://c50aw716ltgm0" path="res://addons/jons-ui-extensions/juicy_visibility_container/example/juicy_visibility_container.gd" id="4_apt3f"]
+
+[node name="Example" type="Control" unique_id=1506794042]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="JuicyContainer" type="MarginContainer" parent="." unique_id=1896305760]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1e-05, 1e-05)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+script = ExtResource("4_apt3f")
+target_visible = false
+spring_stiffness = 5000.0
+spring_damping = 75.0
+metadata/_custom_type_script = "uid://c50aw716ltgm0"
+
+[node name="DebugOutlineRect" type="Control" parent="JuicyContainer" unique_id=1120961398]
+custom_minimum_size = Vector2(120, 100)
+layout_mode = 2
+script = ExtResource("3_j578i")
+outline_color = Color(0.16181748, 0.10028752, 0.2868647, 1)
+fill_color = Color(0.32945397, 0.28023002, 0.42949176, 1)
+metadata/_custom_type_script = "uid://caqled5i2qk0b"
+
+[node name="FlowContainer" type="FlowContainer" parent="JuicyContainer" unique_id=197328536]
+layout_mode = 2
+
+[node name="DebugOutlineRect" type="Control" parent="JuicyContainer/FlowContainer" unique_id=274483558]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+script = ExtResource("3_j578i")
+seed_offset = 10
+outline_color = Color(0.5176651, 0.7849827, 0.5647175, 1)
+fill_color = Color(0.61413205, 0.8279861, 0.651774, 1)
+metadata/_custom_type_script = "uid://caqled5i2qk0b"
+
+[node name="DebugOutlineRect2" type="Control" parent="JuicyContainer/FlowContainer" unique_id=1090697979]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+script = ExtResource("3_j578i")
+seed_offset = 10
+outline_color = Color(0.66129595, 0.32772204, 0.23610759, 1)
+fill_color = Color(0.72903675, 0.46217763, 0.3888861, 1)
+metadata/_custom_type_script = "uid://caqled5i2qk0b"
+
+[node name="DebugOutlineRect3" type="Control" parent="JuicyContainer/FlowContainer" unique_id=471938384]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+script = ExtResource("3_j578i")
+seed_offset = 10
+outline_color = Color(0.71964985, 0.32905516, 0.00020537378, 1)
+fill_color = Color(0.7757199, 0.46324414, 0.20016429, 1)
+metadata/_custom_type_script = "uid://caqled5i2qk0b"
+
+[node name="DebugOutlineRect4" type="Control" parent="JuicyContainer/FlowContainer" unique_id=83925502]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+script = ExtResource("3_j578i")
+seed_offset = 10
+outline_color = Color(0.049694177, 0.28655773, 0.38365528, 1)
+fill_color = Color(0.23975535, 0.4292462, 0.5069242, 1)
+metadata/_custom_type_script = "uid://caqled5i2qk0b"
+
+[node name="DebugOutlineRect5" type="Control" parent="JuicyContainer/FlowContainer" unique_id=1488655583]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+script = ExtResource("3_j578i")
+seed_offset = 10
+outline_color = Color(0.7971918, 0.46751028, 0.29443726, 1)
+fill_color = Color(0.8377534, 0.5740082, 0.4355498, 1)
+metadata/_custom_type_script = "uid://caqled5i2qk0b"
+
+[node name="DebugOutlineRect6" type="Control" parent="JuicyContainer/FlowContainer" unique_id=529944447]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+script = ExtResource("3_j578i")
+seed_offset = 10
+outline_color = Color(0.35275492, 0.06430439, 0.53558975, 1)
+fill_color = Color(0.48220393, 0.2514435, 0.6284718, 1)
+metadata/_custom_type_script = "uid://caqled5i2qk0b"
+
+[node name="DebugOutlineRect7" type="Control" parent="JuicyContainer/FlowContainer" unique_id=196128893]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+script = ExtResource("3_j578i")
+seed_offset = 10
+outline_color = Color(0.41700622, 0.19689995, 0.55647534, 1)
+fill_color = Color(0.533605, 0.35751998, 0.6451803, 1)
+metadata/_custom_type_script = "uid://caqled5i2qk0b"
+
+[node name="DebugOutlineRect8" type="Control" parent="JuicyContainer/FlowContainer" unique_id=904833029]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+script = ExtResource("3_j578i")
+seed_offset = 10
+outline_color = Color(0.18695621, 0.14913234, 0.2458707, 1)
+fill_color = Color(0.34956497, 0.31930587, 0.39669657, 1)
+metadata/_custom_type_script = "uid://caqled5i2qk0b"
+
+[node name="DebugOutlineRect9" type="Control" parent="JuicyContainer/FlowContainer" unique_id=1623958858]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+script = ExtResource("3_j578i")
+seed_offset = 10
+outline_color = Color(0.5026056, 0.44821712, 0.49282667, 1)
+fill_color = Color(0.6020845, 0.5585737, 0.59426135, 1)
+metadata/_custom_type_script = "uid://caqled5i2qk0b"
+
+[node name="DebugOutlineRect10" type="Control" parent="JuicyContainer/FlowContainer" unique_id=1490040777]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+script = ExtResource("3_j578i")
+seed_offset = 10
+outline_color = Color(0.794461, 0.24543808, 0.4747497, 1)
+fill_color = Color(0.8355688, 0.39635047, 0.5797998, 1)
+metadata/_custom_type_script = "uid://caqled5i2qk0b"
