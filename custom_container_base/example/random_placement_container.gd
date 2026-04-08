@@ -10,7 +10,6 @@ func arrange_children(visible_children: Array[Control]) -> void:
 	rng.seed = seed
 
 	for child in visible_children:
-		print(child)
 		_arrange_child(child, rng)
 
 
