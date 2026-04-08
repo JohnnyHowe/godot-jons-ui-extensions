@@ -6,6 +6,7 @@ extends Control
 @export var _other: Control
 @export var _size: bool = true
 @export var _custom_minimum_size: bool = false
+@export var _scale: bool = true
 
 
 func _process(_delta):
@@ -18,3 +19,5 @@ func _process(_delta):
 		size = _other.size
 	if _custom_minimum_size:
 		custom_minimum_size = _other.size
+	if scale:
+		scale = _other.scale
