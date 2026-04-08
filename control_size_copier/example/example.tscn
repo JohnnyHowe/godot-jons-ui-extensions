@@ -50,10 +50,10 @@ color = Color(1.9492954e-06, 0.59182423, 9.62615e-07, 1)
 [node name="ControlSizeCopier" type="Control" parent="." unique_id=849262270 node_paths=PackedStringArray("_other")]
 z_index = 1
 anchors_preset = 0
-offset_left = 514.0
-offset_top = 338.0
-offset_right = 855.0
-offset_bottom = 585.0
+offset_left = 100.0
+offset_top = 218.0
+offset_right = 441.0
+offset_bottom = 465.0
 script = ExtResource("1_1qnqg")
 _other = NodePath("../ToCopy")
 metadata/_custom_type_script = "uid://cgp31gubmdold"
@@ -73,7 +73,7 @@ metadata/_custom_type_script = "uid://b4gip3a8wcv7c"
 
 [node name="ToCopy" type="ColorRect" parent="." unique_id=456178490]
 layout_mode = 0
-offset_left = 514.0
-offset_top = 338.0
-offset_right = 855.0
-offset_bottom = 585.0
+offset_left = 100.0
+offset_top = 218.0
+offset_right = 441.0
+offset_bottom = 465.0
