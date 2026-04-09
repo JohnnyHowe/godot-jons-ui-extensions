@@ -8,6 +8,10 @@ extends Container
 var _is_arranging := false
 
 
+func queue_rearrange() -> void:
+	_arrange_with_guard.call_deferred()
+
+
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_SORT_CHILDREN:
 		_arrange_with_guard.call_deferred()
