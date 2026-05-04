@@ -1,21 +1,21 @@
 func test_segmentLengthEqualsLineLength_fullFill_noScroll_resultsIn_oneSegment():
 	return _get_test_result(
 		[[0, 1]],
-		FancyOutlineRect._get_line_segments_range(1, 1, 1, 0)
+		ScrollingDashedOutlineRect._get_line_segments_range(1, 1, 1, 0)
 	)
 
 
 func test_segmentLengthEqualsLineLength_halfFill_noScroll_resultsIn_oneSegment():
 	return _get_test_result(
 		[[0, 0.5]],
-		FancyOutlineRect._get_line_segments_range(1, 1, 0.5, 0)
+		ScrollingDashedOutlineRect._get_line_segments_range(1, 1, 0.5, 0)
 	)
 
 
 func test_smallScroll_resultsIn_boundedSegments():
 	return _get_test_result(
 		[[0, 0.2], [0.2, 1]],
-		FancyOutlineRect._get_line_segments_range(1, 1, 1, 0.2)
+		ScrollingDashedOutlineRect._get_line_segments_range(1, 1, 1, 0.2)
 	)
 
 

@@ -1,6 +1,6 @@
 @tool
 ## OutlineRect with dashed segments and optional scrolling animation.
-class_name FancyOutlineRect
+class_name ScrollingDashedOutlineRect
 extends OutlineRect
 
 
