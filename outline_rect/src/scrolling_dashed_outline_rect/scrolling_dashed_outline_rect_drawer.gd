@@ -1,31 +1,19 @@
 @tool
 ## Utility for drawing filled rectangles with scrolling dashed outlines from any CanvasItem.
 
-const OutlineDrawer := preload("outline_rect_drawer.gd")
-const DashedOutlineRectDrawer := preload("dashed_outline_rect_drawer.gd")
-
-
-## Parameter object for scrolling dashed outline rect drawing.
-class Params:
-	extends DashedOutlineRectDrawer.Params
-
-	var scroll: float = 0.0
+const OutlineRectDrawer := preload("../outline_rect/outline_rect_drawer.gd")
+const ScrollingDashedOutlineRectParams := preload("scrolling_dashed_outline_rect_params.gd")
 
 
 ## Draws fill first, then scrolling dashed outline, using the supplied CanvasItem as the draw target.
-static func draw(target: CanvasItem, params: Params) -> void:
-	OutlineDrawer.draw_fill(target, params.rect, params.fill_color)
-	var rect_and_thickness := OutlineDrawer.get_outline_rect_and_thickness(
-		params.rect,
-		params.outline_thickness,
-		params.screen_space_thickness,
-		params.draw_transform_x
-	)
+static func draw(target: CanvasItem, params: ScrollingDashedOutlineRectParams) -> void:
+	OutlineRectDrawer.draw_fill(target, params.rect, params.fill_color)
+	var rect := OutlineRectDrawer.get_rect_accounting_for_thickness(params.rect, params.outline_thickness)
 	draw_outline(
 		target,
-		rect_and_thickness[0],
+		rect,
 		params.outline_color,
-		rect_and_thickness[1],
+		params.outline_thickness,
 		params.dash_size,
 		params.gap_size,
 		params.scroll
@@ -45,8 +33,8 @@ static func draw_outline(
 	var start := rect.position
 	var end := rect.end
 
-	var x_offset := Vector2(thickness / 2.0, 0)
-	var y_offset := Vector2(0, thickness / 2.0)
+	var x_offset := Vector2(thickness / 2.0, 0.0)
+	var y_offset := Vector2(0.0, thickness / 2.0)
 
 	_draw_line(target, start - y_offset, Vector2(start.x, end.y) + y_offset, outline_color, thickness, dash_size, gap_size, -scroll)
 	_draw_line(target, Vector2(end.x, start.y) - y_offset, end + y_offset, outline_color, thickness, dash_size, gap_size, scroll)
@@ -68,8 +56,8 @@ static func _draw_line(
 	var dash_size_pixels := thickness * dash_size
 	var gap_size_pixels := thickness * gap_size
 	var difference := end - start
-
 	var length := difference.length()
+
 	if length == 0.0:
 		return
 
@@ -109,9 +97,8 @@ static func _get_line_segments_start(line_length: float, segment_length: float, 
 		unbounded_start -= segment_length
 
 	var length_to_cover := line_length - unbounded_start
-
 	var results: Array[float] = []
-	var n_segments: int = ceili(length_to_cover / segment_length)
+	var n_segments := ceili(length_to_cover / segment_length)
 
 	for segment_index in range(n_segments):
 		results.append(unbounded_start + segment_index * segment_length)

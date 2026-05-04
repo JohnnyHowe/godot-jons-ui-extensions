@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://caqled5i2qk0b" path="res://addons/jons-ui-extensions/outline_rect/src/debug_outline_rect.gd" id="3_j578i"]
 [ext_resource type="Script" uid="uid://cu8i4xogdkhej" path="res://addons/jons-ui-extensions/juicy_visibility_container/example/juicy_visibility_container.gd" id="4_apt3f"]
 
+
 [node name="Example" type="Control" unique_id=1506794042]
 layout_mode = 3
 anchors_preset = 15
