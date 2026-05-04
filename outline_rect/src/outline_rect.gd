@@ -3,6 +3,8 @@
 class_name OutlineRect
 extends Control
 
+const Drawer := preload("outline_rect_drawer.gd")
+
 
 ## Color used for the rectangle outline.
 @export var outline_color: Color = Color.BLACK:
@@ -60,7 +62,7 @@ func _draw() -> void:
 
 ## Draws the filled rectangle.
 func _draw_fill() -> void:
-	draw_rect(Rect2(Vector2.ZERO, size), fill_color)
+	Drawer.draw_fill(self , _make_draw_params().rect, fill_color)
 
 
 ## Computes and draws the outline.
@@ -71,21 +73,27 @@ func _draw_outline() -> void:
 
 ## Draws the outline for the given rect and thickness.
 func draw_outline(rect: Rect2, thickness: float) -> void:
-	draw_rect(rect, outline_color, false, thickness)
+	Drawer.draw_outline(self , rect, outline_color, thickness)
 
 
 ## Returns `[rect: Rect2, thickness: float]` for the current size and settings.
 func _get_outline_rect_and_thickness() -> Array:
-	var draw_thickness := outline_thickness
+	var params := _make_draw_params()
+	return Drawer.get_outline_rect_and_thickness(
+		params.rect,
+		params.outline_thickness,
+		params.screen_space_thickness,
+		params.draw_transform_x
+	)
 
-	# convert to screen space?
-	if screen_space_thickness:
-		draw_thickness = outline_thickness / _last_draw_transform_x
 
-	# ensure outline_thickness will not cause overdraw
-	draw_thickness = min(draw_thickness, size.x / 2, size.y / 2)
-
-	var thickness_vector = Vector2.ONE * draw_thickness
-	var outline_rect := Rect2(thickness_vector / 2, size - thickness_vector)
-
-	return [outline_rect, draw_thickness]
+## Returns draw parameters shared with utility-based callers.
+func _make_draw_params() -> Drawer.Params:
+	return Drawer.Params.new(
+		Rect2(Vector2.ZERO, size),
+		outline_color,
+		fill_color,
+		outline_thickness,
+		screen_space_thickness,
+		_last_draw_transform_x
+	)
