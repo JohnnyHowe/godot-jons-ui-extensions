@@ -3,89 +3,40 @@
 class_name DashedOutlineRect
 extends OutlineRect
 
+const DashedOutlineRectDrawer := preload("dashed_outline_rect_drawer.gd")
+
+
+var _dashed_draw_params := DashedOutlineRectDrawer.Params.new()
+
 
 ## Length of each dash, in multiples of outline thickness.
 @export var dash_size: float = 4:
 	set(value):
 		dash_size = value
+		_sync_draw_params()
 		queue_redraw()
 
 ## Length of each gap, in multiples of outline thickness.
 @export var gap_size: float = 2:
 	set(value):
 		gap_size = value
+		_sync_draw_params()
 		queue_redraw()
 
 
-## Advances the dash scroll over time, while preserving base OutlineRect behavior.
-func _process(delta: float) -> void:
-	super._process(delta)
+func _draw() -> void:
+	DashedOutlineRectDrawer.draw(self, _dashed_draw_params)
 
 
-## Draws a dashed outline around the rect with optional scrolling.
-func draw_outline(rect: Rect2, thickness: float) -> void:
-	var half_thickness_vector = Vector2.ZERO
+## Syncs the cached dashed draw parameters from the current node state.
+func _sync_draw_params() -> void:
+	super._sync_draw_params()
 
-	var start = rect.position + half_thickness_vector
-	var end = rect.end - half_thickness_vector
-
-	var x_offset := Vector2(thickness / 2, 0)
-	var y_offset := Vector2(0, thickness / 2)
-
-	# left
-	_draw_line(start - y_offset, Vector2(start.x, end.y) + y_offset, thickness)
-	# right
-	_draw_line(Vector2(end.x, start.x) - y_offset, end + y_offset, thickness)
-	# top
-	_draw_line(start - x_offset, Vector2(end.x, start.y) + x_offset, thickness)
-	# bottom
-	_draw_line(Vector2(start.x, end.y) - x_offset, end + x_offset, thickness)
-
-
-## Draws a dashed line segment between two points.
-func _draw_line(start: Vector2, end: Vector2, thickness: float) -> void:
-	var dash_size_pixels := thickness * dash_size
-	var gap_size_pixels := thickness * gap_size
-
-	var difference = end - start
-
-	var length: float = difference.length()
-	if length == 0:
-		return
-
-	var segment_length: float = dash_size_pixels + gap_size_pixels
-
-	for segment in _get_line_segments_range(length, segment_length, dash_size_pixels):
-		var segment_normalized := [segment[0] / length, segment[1] / length]
-		draw_line(
-			lerp(start, end, segment_normalized[0]),
-			lerp(start, end, segment_normalized[1]),
-			outline_color,
-			thickness
-		)
-
-
-## Returns `[start, end]` pairs for each visible dash segment.
-static func _get_line_segments_range(line_length: float, segment_length: float, segment_fill: float) -> Array[Array]:
-	var starts := _get_line_segments_start(line_length, segment_length)
-
-	var results: Array[Array] = []
-	for start in starts:
-		results.append([max(0, start), clampf(start + segment_fill, 0, line_length)])
-	return results
-
-
-## _scroll in range [start, end]
-## returns start positions
-## Returns start positions for each dash segment along a line.
-static func _get_line_segments_start(line_length: float, segment_length: float) -> Array[float]:
-	if segment_length <= 0:
-		return []
-
-	var results: Array[float] = []
-
-	var n_segments: int = ceil(line_length / segment_length)
-	for segment_index in range(n_segments):
-		results.append(segment_index * segment_length)
-
-	return results
+	_dashed_draw_params.rect = _draw_params.rect
+	_dashed_draw_params.outline_color = _draw_params.outline_color
+	_dashed_draw_params.fill_color = _draw_params.fill_color
+	_dashed_draw_params.outline_thickness = _draw_params.outline_thickness
+	_dashed_draw_params.screen_space_thickness = _draw_params.screen_space_thickness
+	_dashed_draw_params.draw_transform_x = _draw_params.draw_transform_x
+	_dashed_draw_params.dash_size = dash_size
+	_dashed_draw_params.gap_size = gap_size

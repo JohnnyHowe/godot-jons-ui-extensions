@@ -10,28 +10,28 @@ const OutlineRectDrawer := preload("outline_rect_drawer.gd")
 @export var outline_color: Color = Color.BLACK:
 	set(value):
 		outline_color = value
-		_draw_params.outline_color = value
+		_sync_draw_params()
 		queue_redraw()
 
 ## Fill color for the rectangle interior (alpha respected).
 @export var fill_color: Color = Color(1, 1, 1, 0):
 	set(value):
 		fill_color = value
-		_draw_params.fill_color = value
+		_sync_draw_params()
 		queue_redraw()
 
 ## Outline thickness in pixels or local units, depending on `screen_space_thickness`.
 @export var outline_thickness: float = 5.0:
 	set(value):
 		outline_thickness = value
-		_draw_params.outline_thickness = value
+		_sync_draw_params()
 		queue_redraw()
 
 ## When true, the outline thickness is kept constant in screen space.
 @export var screen_space_thickness: bool = true:
 	set(value):
 		screen_space_thickness = value
-		_draw_params.screen_space_thickness = value
+		_sync_draw_params()
 		queue_redraw()
 
 
@@ -66,14 +66,14 @@ func _process(_delta: float) -> void:
 		return
 
 	_last_draw_transform_x = new_transform_x
-	_draw_params.draw_transform_x = new_transform_x
+	_sync_draw_params()
 	queue_redraw()
 
 
 ## Redraws the outline when the control is resized.
 func _notification(what) -> void:
 	if what == NOTIFICATION_RESIZED:
-		_draw_params.rect = Rect2(Vector2.ZERO, size)
+		_sync_draw_params()
 		queue_redraw()
 		
 
