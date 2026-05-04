@@ -78,9 +78,7 @@ func _notification(what) -> void:
 		
 
 func _draw() -> void:
-	Drawer.draw_fill(self, _draw_params.rect, _draw_params.fill_color)
-	var rect_and_thickness = _get_outline_rect_and_thickness()
-	Drawer.draw_outline(self, rect_and_thickness[0], _draw_params.outline_color, rect_and_thickness[1])
+	Drawer.draw(self, _draw_params)
 
 
 ## Returns `[rect: Rect2, thickness: float]` for the current size and settings.
