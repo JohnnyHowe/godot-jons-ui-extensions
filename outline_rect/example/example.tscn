@@ -3,10 +3,12 @@
 [ext_resource type="Script" uid="uid://dp7w3q5yfxq5k" path="res://addons/jons-ui-extensions/outline_rect/src/outline_rect.gd" id="1_2haen"]
 [ext_resource type="Script" uid="uid://dwb2vaj7m20xx" path="res://addons/jons-ui-extensions/outline_rect/example/help.gd" id="1_i5aew"]
 [ext_resource type="Script" uid="uid://cpqpai61s8vww" path="res://addons/jons-ui-extensions/outline_rect/src/dashed_outline_rect.gd" id="3_heqbo"]
+[ext_resource type="Script" uid="uid://bvde7uwrm6oyj" path="res://addons/jons-ui-extensions/outline_rect/src/scrolling_dashed_outline_rect.gd" id="4_khnl7"]
 
 [sub_resource type="SystemFont" id="SystemFont_heqbo"]
 font_names = PackedStringArray("Cascadia Mono", "Monospace")
 font_weight = 999
+subpixel_positioning = 0
 
 [sub_resource type="Theme" id="Theme_heqbo"]
 RichTextLabel/fonts/normal_font = SubResource("SystemFont_heqbo")
@@ -30,7 +32,7 @@ offset_left = 23.0
 offset_top = 25.0
 offset_right = 279.0
 offset_bottom = 72.66667
-rotation = -0.015060658
+rotation = -0.005135419
 pivot_offset_ratio = Vector2(0.5, 0.5)
 bbcode_enabled = true
 text = "[b]In Edit mode[/b]
@@ -85,6 +87,8 @@ metadata/_edit_lock_ = true
 layout_mode = 2
 bbcode_enabled = true
 text = "[b]OutlineRect[/b]
+
+[color=#999]outline_color=[/color]white
 [color=#999]fill_color=[/color]clear/alpha
 [color=#999]outline_thickness=[/color]5
 [color=#999]screen_space_thickness[/color]=true"
@@ -122,6 +126,8 @@ metadata/_edit_lock_ = true
 layout_mode = 2
 bbcode_enabled = true
 text = "[b]OutlineRect[/b]
+
+[color=#999]outline_color=[/color]black
 [color=#999]fill_color=[/color]purple
 [color=#999]outline_thickness=[/color]10
 [color=#999]screen_space_thickness[/color]=false"
@@ -156,11 +162,58 @@ metadata/_edit_lock_ = true
 layout_mode = 2
 bbcode_enabled = true
 text = "[b]DashedOutlineRect[/b]
+
+[color=#999]outline_color=[/color]white
 [color=#999]fill_color=[/color]dark green
 [color=#999]outline_thickness=[/color]15
 [color=#999]screen_space_thickness[/color]=true
+
 [color=#999]dash_size=[/color]4
 [color=#999]gap_size=[/color]2
+"
+scroll_active = false
+autowrap_mode = 0
+metadata/_edit_lock_ = true
+
+[node name="ScrollingDashedOutlineRect" type="Control" parent="." unique_id=1161367066]
+anchors_preset = 0
+offset_left = 933.0
+offset_top = 514.0
+offset_right = 1414.0
+offset_bottom = 820.0
+script = ExtResource("4_khnl7")
+dash_size = 3.0
+gap_size = 2.0
+scroll_speed = 20.0
+outline_color = Color(1, 1, 1, 1)
+fill_color = Color(7.2196127e-07, 0, 0.39342433, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="ScrollingDashedOutlineRect" unique_id=97568596]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+metadata/_edit_lock_ = true
+
+[node name="Label" type="RichTextLabel" parent="ScrollingDashedOutlineRect/MarginContainer" unique_id=2141355709]
+layout_mode = 2
+bbcode_enabled = true
+text = "[b]ScrollingDashedOutlineRect[/b]
+
+[color=#999]outline_color=[/color]white
+[color=#999]fill_color=[/color]dark blue
+[color=#999]outline_thickness=[/color]15
+[color=#999]screen_space_thickness[/color]=true
+
+[color=#999]dash_size=[/color]3
+[color=#999]gap_size=[/color]2
+[color=#999]scroll_speed=[/color]20
 "
 scroll_active = false
 autowrap_mode = 0
