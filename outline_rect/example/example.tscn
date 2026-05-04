@@ -32,7 +32,7 @@ offset_left = 23.0
 offset_top = 25.0
 offset_right = 279.0
 offset_bottom = 72.66667
-rotation = -0.005135419
+rotation = -0.033520576
 pivot_offset_ratio = Vector2(0.5, 0.5)
 bbcode_enabled = true
 text = "[b]In Edit mode[/b]
@@ -185,6 +185,7 @@ script = ExtResource("4_khnl7")
 dash_size = 3.0
 gap_size = 2.0
 scroll_speed = 20.0
+current_scroll = 4648.549573333284
 outline_color = Color(1, 1, 1, 1)
 fill_color = Color(7.2196127e-07, 0, 0.39342433, 1)
 

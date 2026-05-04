@@ -4,7 +4,7 @@
 
 ## Parameter object for outline rect drawing.
 class Params:
-	extends RefCounted
+	extends Resource
 
 	var rect: Rect2
 	var outline_color: Color = Color.BLACK

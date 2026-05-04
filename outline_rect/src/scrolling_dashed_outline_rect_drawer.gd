@@ -11,9 +11,6 @@ class Params:
 
 	var scroll: float = 0.0
 
-	func _init(rect_: Rect2 = Rect2()) -> void:
-		super(rect_)
-
 
 ## Draws fill first, then scrolling dashed outline, using the supplied CanvasItem as the draw target.
 static func draw(target: CanvasItem, params: Params) -> void:
