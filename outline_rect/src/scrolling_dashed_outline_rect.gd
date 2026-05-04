@@ -27,10 +27,10 @@ var _dashed_draw_params := ScrollingDashedOutlineRectDrawer.Params.new()
 @export var scroll_speed: float = 1
 
 ## Accumulated scroll offset for the dash pattern.
-var _scroll: float = 0:
+@export var current_scroll: float = 0:
 	set(value):
-		if value != _scroll:
-			_scroll = value
+		if value != current_scroll:
+			current_scroll = value
 			_sync_draw_params()
 			queue_redraw()
 
@@ -39,7 +39,7 @@ var _scroll: float = 0:
 func _process(delta: float) -> void:
 	super._process(delta)
 	if scroll_speed != 0:
-		_scroll += delta * scroll_speed
+		current_scroll += delta * scroll_speed
 
 
 func _draw() -> void:
@@ -58,7 +58,7 @@ func _sync_draw_params() -> void:
 	_dashed_draw_params.draw_transform_x = _draw_params.draw_transform_x
 	_dashed_draw_params.dash_size = dash_size
 	_dashed_draw_params.gap_size = gap_size
-	_dashed_draw_params.scroll = _scroll
+	_dashed_draw_params.scroll = current_scroll
 
 
 ## Returns `[start, end]` pairs for each visible dash segment.
@@ -71,7 +71,7 @@ static func _get_line_segments_range(line_length: float, segment_length: float, 
 	)
 
 
-## _scroll in range [start, end]
+## current_scroll in range [start, end]
 ## returns start positions
 ## Returns start positions for each dash segment along a line.
 static func _get_line_segments_start(line_length: float, segment_length: float, line_scroll: float) -> Array[float]:
