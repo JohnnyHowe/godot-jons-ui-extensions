@@ -10,23 +10,13 @@ class Params:
 	var outline_color: Color = Color.BLACK
 	var fill_color: Color = Color(1, 1, 1, 0)
 	var outline_thickness: float = 5.0
-	var screen_space_thickness: bool = true
+	var screen_space_thickness: bool = false
 	var draw_transform_x: float = 1.0
 
 	func _init(
-		rect_: Rect2 = Rect2(),
-		outline_color_: Color = Color.BLACK,
-		fill_color_: Color = Color(1, 1, 1, 0),
-		outline_thickness_: float = 5.0,
-		screen_space_thickness_: bool = true,
-		draw_transform_x_: float = 1.0
+		rect_: Rect2 = Rect2()
 	) -> void:
 		rect = rect_
-		outline_color = outline_color_
-		fill_color = fill_color_
-		outline_thickness = outline_thickness_
-		screen_space_thickness = screen_space_thickness_
-		draw_transform_x = draw_transform_x_
 
 
 ## Draws fill first, then outline, using the supplied CanvasItem as the draw target.
