@@ -3,14 +3,14 @@
 class_name DashedOutlineRect
 extends Control
 
-const DashedOutlineRectDrawer := preload("dashed_outline_rect_drawer.gd")
-const DashedOutlineRectParams := preload("dashed_outline_rect_params.gd")
+const Drawer := preload("dashed_outline_rect_drawer.gd")
+const Params := preload("dashed_outline_rect_params.gd")
 
 
-@export var draw_params := DashedOutlineRectParams.new():
+@export var draw_params := Params.new():
 	set(value):
 		if value == null:
-			value = DashedOutlineRectParams.new()
+			value = Params.new()
 		if value == draw_params:
 			return
 		draw_params = value
@@ -35,6 +35,6 @@ func _draw() -> void:
 	if not draw_params:
 		return
 
-	var draw_params_copy: DashedOutlineRectParams = draw_params.duplicate()
+	var draw_params_copy: Params = draw_params.duplicate()
 	draw_params_copy.rect = Rect2(Vector2.ZERO, size)
-	DashedOutlineRectDrawer.draw(self, draw_params_copy)
+	Drawer.draw(self, draw_params_copy)

@@ -3,14 +3,14 @@
 class_name OutlineRect
 extends Control
 
-const OutlineRectDrawer := preload("outline_rect_drawer.gd")
-const OutlineRectParams := preload("outline_rect_params.gd")
+const Drawer := preload("outline_rect_drawer.gd")
+const Params := preload("outline_rect_params.gd")
 
 
-@export var draw_params := OutlineRectParams.new():
+@export var draw_params := Params.new():
 	set(value):
 		if value == null:
-			value = OutlineRectParams.new()
+			value = Params.new()
 		if value == draw_params:
 			return
 		draw_params = value
@@ -39,4 +39,4 @@ func _draw() -> void:
 	draw_params_copy.outline_thickness
 	draw_params_copy.rect = Rect2(Vector2.ZERO, size)
 
-	OutlineRectDrawer.draw(self , draw_params_copy)
+	Drawer.draw(self , draw_params_copy)

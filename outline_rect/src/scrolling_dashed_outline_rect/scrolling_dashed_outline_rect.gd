@@ -3,14 +3,14 @@
 class_name ScrollingDashedOutlineRect
 extends Control
 
-const ScrollingDashedOutlineRectDrawer := preload("scrolling_dashed_outline_rect_drawer.gd")
-const ScrollingDashedOutlineRectParams := preload("scrolling_dashed_outline_rect_params.gd")
+const Drawer := preload("scrolling_dashed_outline_rect_drawer.gd")
+const Params := preload("scrolling_dashed_outline_rect_params.gd")
 
 
-@export var draw_params := ScrollingDashedOutlineRectParams.new():
+@export var draw_params := Params.new():
 	set(value):
 		if value == null:
-			value = ScrollingDashedOutlineRectParams.new()
+			value = Params.new()
 		if value == draw_params:
 			return
 		draw_params = value
@@ -43,14 +43,14 @@ func _draw() -> void:
 	if not draw_params:
 		return
 
-	var draw_params_copy: ScrollingDashedOutlineRectParams = draw_params.duplicate()
+	var draw_params_copy: Params = draw_params.duplicate()
 	draw_params_copy.rect = Rect2(Vector2.ZERO, size)
-	ScrollingDashedOutlineRectDrawer.draw(self, draw_params_copy)
+	Drawer.draw(self, draw_params_copy)
 
 
 ## Returns `[start, end]` pairs for each visible dash segment.
 static func _get_line_segments_range(line_length: float, segment_length: float, segment_fill: float, line_scroll: float) -> Array[Array]:
-	return ScrollingDashedOutlineRectDrawer._get_line_segments_range(
+	return Drawer._get_line_segments_range(
 		line_length,
 		segment_length,
 		segment_fill,
@@ -60,7 +60,7 @@ static func _get_line_segments_range(line_length: float, segment_length: float, 
 
 ## Returns start positions for each dash segment along a line.
 static func _get_line_segments_start(line_length: float, segment_length: float, line_scroll: float) -> Array[float]:
-	return ScrollingDashedOutlineRectDrawer._get_line_segments_start(
+	return Drawer._get_line_segments_start(
 		line_length,
 		segment_length,
 		line_scroll
