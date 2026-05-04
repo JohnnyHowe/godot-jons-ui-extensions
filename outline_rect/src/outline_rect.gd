@@ -3,7 +3,7 @@
 class_name OutlineRect
 extends Control
 
-const Drawer := preload("outline_rect_drawer.gd")
+const OutlineRectDrawer := preload("outline_rect_drawer.gd")
 
 
 ## Color used for the rectangle outline.
@@ -37,7 +37,7 @@ const Drawer := preload("outline_rect_drawer.gd")
 
 ## Last transform scale used to detect screen-space thickness changes.
 var _last_draw_transform_x: float
-var _draw_params := Drawer.Params.new()
+var _draw_params := OutlineRectDrawer.Params.new()
 
 
 func _ready() -> void:
@@ -78,12 +78,12 @@ func _notification(what) -> void:
 		
 
 func _draw() -> void:
-	Drawer.draw(self, _draw_params)
+	OutlineRectDrawer.draw(self, _draw_params)
 
 
 ## Returns `[rect: Rect2, thickness: float]` for the current size and settings.
 func _get_outline_rect_and_thickness() -> Array:
-	return Drawer.get_outline_rect_and_thickness(
+	return OutlineRectDrawer.get_outline_rect_and_thickness(
 		_draw_params.rect,
 		_draw_params.outline_thickness,
 		_draw_params.screen_space_thickness,
