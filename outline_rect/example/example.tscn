@@ -1,8 +1,15 @@
 [gd_scene format=3 uid="uid://r0mc6bsuymrc"]
 
-[ext_resource type="Script" path="res://addons/jons-ui-extensions/outline_rect/src/outline_rect.gd" id="1_2haen"]
+[ext_resource type="Script" uid="uid://dp7w3q5yfxq5k" path="res://addons/jons-ui-extensions/outline_rect/src/outline_rect.gd" id="1_2haen"]
 [ext_resource type="Script" uid="uid://dwb2vaj7m20xx" path="res://addons/jons-ui-extensions/outline_rect/example/help.gd" id="1_i5aew"]
-[ext_resource type="Script" path="res://addons/jons-ui-extensions/outline_rect/src/fancy_outline_rect.gd" id="2_ewg26"]
+[ext_resource type="Script" uid="uid://cpqpai61s8vww" path="res://addons/jons-ui-extensions/outline_rect/src/dashed_outline_rect.gd" id="3_heqbo"]
+
+[sub_resource type="SystemFont" id="SystemFont_heqbo"]
+font_names = PackedStringArray("Cascadia Mono", "Monospace")
+font_weight = 999
+
+[sub_resource type="Theme" id="Theme_heqbo"]
+RichTextLabel/fonts/normal_font = SubResource("SystemFont_heqbo")
 
 [node name="Example" type="ColorRect" unique_id=760407173]
 anchors_preset = 15
@@ -12,6 +19,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme = SubResource("Theme_heqbo")
 color = Color(0.45452422, 0.45452428, 0.45452422, 1)
 
 [node name="Help" type="RichTextLabel" parent="." unique_id=2036225135]
@@ -22,11 +30,12 @@ offset_left = 23.0
 offset_top = 25.0
 offset_right = 279.0
 offset_bottom = 72.66667
-rotation = -0.0069711935
+rotation = -0.030641554
 pivot_offset_ratio = Vector2(0.5, 0.5)
 bbcode_enabled = true
 text = "[b]In Edit mode[/b]
 Try moving and resizing the rects"
+fit_content = true
 script = ExtResource("1_i5aew")
 wobble_period = 2.0
 wobble_degrees = 2.0
@@ -53,8 +62,8 @@ clip_contents = true
 anchors_preset = 0
 offset_left = 339.0
 offset_top = 210.0
-offset_right = 618.0
-offset_bottom = 414.0
+offset_right = 661.0
+offset_bottom = 411.0
 script = ExtResource("1_2haen")
 outline_color = Color(1, 1, 1, 1)
 metadata/_custom_type_script = "uid://dp7w3q5yfxq5k"
@@ -72,22 +81,26 @@ theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 metadata/_edit_lock_ = true
 
-[node name="Label" type="Label" parent="OutlineRectScreenSpace/MarginContainer" unique_id=1336738462]
+[node name="Label" type="RichTextLabel" parent="OutlineRectScreenSpace/MarginContainer" unique_id=1279660478]
 layout_mode = 2
-size_flags_vertical = 1
-text = "Outline Rect
-
-screen_space_thickness = true"
+bbcode_enabled = true
+text = "[b]OutlineRect[/b]
+[color=#999]fill_color=[/color]clear/alpha
+[color=#999]outline_thickness=[/color]5
+[color=#999]screen_space_thickness[/color]=true"
+scroll_active = false
+autowrap_mode = 0
 metadata/_edit_lock_ = true
 
 [node name="OutlineRectWorldSpace" type="Control" parent="." unique_id=1268910956 groups=["moveable"]]
 clip_contents = true
 anchors_preset = 0
-offset_left = 335.0
-offset_top = 457.0
-offset_right = 614.0
-offset_bottom = 661.0
+offset_left = 67.0
+offset_top = 504.0
+offset_right = 557.0
+offset_bottom = 693.0
 script = ExtResource("1_2haen")
+fill_color = Color(0.3583767, 0.00010624863, 0.3683323, 1)
 outline_thickness = 10.0
 screen_space_thickness = false
 metadata/_custom_type_script = "uid://dp7w3q5yfxq5k"
@@ -105,29 +118,28 @@ theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 metadata/_edit_lock_ = true
 
-[node name="Label" type="Label" parent="OutlineRectWorldSpace/MarginContainer" unique_id=793664323]
+[node name="Label" type="RichTextLabel" parent="OutlineRectWorldSpace/MarginContainer" unique_id=2001484999]
 layout_mode = 2
-size_flags_vertical = 1
-text = "Outline Rect
-
-screen_space_thickness = true"
+bbcode_enabled = true
+text = "[b]OutlineRect[/b]
+[color=#999]fill_color=[/color]purple
+[color=#999]outline_thickness=[/color]10
+[color=#999]screen_space_thickness[/color]=false"
+scroll_active = false
+autowrap_mode = 0
 metadata/_edit_lock_ = true
 
-[node name="FancyOutlineRectScreenSpace" type="Control" parent="." unique_id=779558391 groups=["moveable"]]
-clip_contents = true
+[node name="DashedOutlineRect" type="Control" parent="." unique_id=1404413780]
 anchors_preset = 0
-offset_left = 651.0
-offset_top = 236.0
-offset_right = 1097.0
-offset_bottom = 425.0
-script = ExtResource("2_ewg26")
-dash_size = 6.0
-gap_size = 2.0
-scroll_speed = 20.0
-fill_color = Color(1, 0, 0, 0.58431375)
-metadata/_custom_type_script = "uid://b4gip3a8wcv7c"
+offset_left = 970.0
+offset_top = 114.0
+offset_right = 1439.0
+offset_bottom = 362.0
+script = ExtResource("3_heqbo")
+fill_color = Color(0, 0.35155076, 1.92523e-07, 1)
+metadata/_custom_type_script = "uid://cpqpai61s8vww"
 
-[node name="MarginContainer" type="MarginContainer" parent="FancyOutlineRectScreenSpace" unique_id=721099681]
+[node name="MarginContainer" type="MarginContainer" parent="DashedOutlineRect" unique_id=624777193]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -140,54 +152,16 @@ theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 metadata/_edit_lock_ = true
 
-[node name="Label" type="Label" parent="FancyOutlineRectScreenSpace/MarginContainer" unique_id=734735188]
+[node name="Label" type="RichTextLabel" parent="DashedOutlineRect/MarginContainer" unique_id=382363996]
 layout_mode = 2
-size_flags_vertical = 1
-text = "Fancy Outline Rect
-
-screen_space_thickness = true
-
-dash_size = 6
-gap_size = 2
-scroll_speed = 5"
-metadata/_edit_lock_ = true
-
-[node name="FancyOutlineRect3" type="Control" parent="." unique_id=700267335 groups=["moveable"]]
-clip_contents = true
-anchors_preset = 0
-offset_left = 642.0
-offset_top = 471.0
-offset_right = 1089.0
-offset_bottom = 888.0
-script = ExtResource("2_ewg26")
-dash_size = 6.0
-gap_size = 2.0
-scroll_speed = 20.0
-fill_color = Color(0, 0, 1, 0.58431375)
-screen_space_thickness = false
-metadata/_custom_type_script = "uid://b4gip3a8wcv7c"
-
-[node name="MarginContainer" type="MarginContainer" parent="FancyOutlineRect3" unique_id=299729988]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-metadata/_edit_lock_ = true
-
-[node name="Label" type="Label" parent="FancyOutlineRect3/MarginContainer" unique_id=337898774]
-layout_mode = 2
-size_flags_vertical = 1
-text = "Fancy Outline Rect
-
-screen_space_thickness = false
-
-dash_size = 6
-gap_size = 2
-scroll_speed = 5"
+bbcode_enabled = true
+text = "[b]DashedOutlineRect[/b]
+[color=#999]fill_color=[/color]dark green
+[color=#999]outline_thickness=[/color]15
+[color=#999]screen_space_thickness[/color]=true
+[color=#999]dash_size=[/color]4
+[color=#999]gap_size=[/color]2
+"
+scroll_active = false
+autowrap_mode = 0
 metadata/_edit_lock_ = true
