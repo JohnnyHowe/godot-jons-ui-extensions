@@ -59,6 +59,10 @@ func _ready() -> void:
 		collapse_instant.call_deferred()
 
 
+func set_target(t: float) -> void:
+	_target_t = t
+
+
 ## Starts an animated transition toward the expanded layout.
 func expand() -> void:
 	_target_t = 1
