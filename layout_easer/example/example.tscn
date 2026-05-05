@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cmbi8355cuoi3"]
 
-[ext_resource type="Script" uid="uid://bn4lrc3d8jinr" path="res://addons/jons-ui-extensions/layout_easer/example/ping_pong_check_button.gd" id="1_1yryy"]
 [ext_resource type="Script" uid="uid://deytcinju0n26" path="res://addons/jons-ui-extensions/layout_easer/layout_easer.gd" id="1_b0nom"]
+[ext_resource type="PackedScene" uid="uid://clau2a68v8404" path="res://addons/jons-ui-extensions/layout_easer/example/layout_easer_control_panel.tscn" id="1_geilv"]
 [ext_resource type="Script" uid="uid://dj77iptrgyvt0" path="res://addons/jons-ui-extensions/outline_rect/src/dashed_outline_rect/dashed_outline_rect_params.gd" id="2_1yryy"]
 
 [sub_resource type="Theme" id="Theme_8k2rq"]
@@ -27,6 +27,26 @@ outline_color = Color(0, 1, 0, 1)
 [sub_resource type="Resource" id="Resource_hwk72"]
 script = ExtResource("2_1yryy")
 outline_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Curve" id="Curve_ly6mr"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_1yryy"]
+script = ExtResource("2_1yryy")
+outline_color = Color(0, 0, 1, 1)
+
+[sub_resource type="Resource" id="Resource_3gitv"]
+script = ExtResource("2_1yryy")
+outline_color = Color(0, 1, 0, 1)
+
+[sub_resource type="Resource" id="Resource_yw0np"]
+script = ExtResource("2_1yryy")
+outline_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Curve" id="Curve_geilv"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [node name="Example" type="Control" unique_id=909243086]
 layout_mode = 3
@@ -54,91 +74,42 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer" unique_id=1375042632]
+[node name="SimpleExample" type="MarginContainer" parent="HBoxContainer" unique_id=1375042632]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Background" type="ColorRect" parent="HBoxContainer/MarginContainer" unique_id=1736303545]
+[node name="Background" type="ColorRect" parent="HBoxContainer/SimpleExample" unique_id=1736303545]
 layout_mode = 2
-color = Color(0.18000486, 0.18000486, 0.18000486, 1)
+color = Color(1, 1, 1, 0.19607843)
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/MarginContainer" unique_id=781177475]
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/SimpleExample" unique_id=781177475]
 layout_mode = 2
 
-[node name="SimpleExample" type="VBoxContainer" parent="HBoxContainer/MarginContainer/MarginContainer" unique_id=2143127381]
+[node name="Content" type="VBoxContainer" parent="HBoxContainer/SimpleExample/MarginContainer" unique_id=2143127381]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Header" type="RichTextLabel" parent="HBoxContainer/MarginContainer/MarginContainer/SimpleExample" unique_id=124530378]
+[node name="Header" type="RichTextLabel" parent="HBoxContainer/SimpleExample/MarginContainer/Content" unique_id=124530378]
 layout_mode = 2
 bbcode_enabled = true
 text = "[b]Simple Example[/b]"
 fit_content = true
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/MarginContainer/MarginContainer/SimpleExample" unique_id=178098947]
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/SimpleExample/MarginContainer/Content" unique_id=178098947]
 layout_mode = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/MarginContainer/MarginContainer/SimpleExample/MarginContainer" unique_id=1714712269]
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/SimpleExample/MarginContainer/Content/MarginContainer" unique_id=1714712269]
 layout_mode = 2
 bbcode_enabled = true
 text = "[color=#999]Curve: SmoothStep"
 fit_content = true
 scroll_active = false
 
-[node name="Controls" type="MarginContainer" parent="HBoxContainer/MarginContainer/MarginContainer/SimpleExample" unique_id=2041876102]
+[node name="LayoutEaserControlPanel" parent="HBoxContainer/SimpleExample/MarginContainer/Content" unique_id=1422768252 node_paths=PackedStringArray("target") instance=ExtResource("1_geilv")]
 layout_mode = 2
+target = NodePath("../LayoutEaser")
 
-[node name="GridContainer" type="GridContainer" parent="HBoxContainer/MarginContainer/MarginContainer/SimpleExample/Controls" unique_id=1243958745]
-layout_mode = 2
-columns = 2
-
-[node name="TargetT_Header" type="RichTextLabel" parent="HBoxContainer/MarginContainer/MarginContainer/SimpleExample/Controls/GridContainer" unique_id=1309428249]
-layout_mode = 2
-text = "Target T"
-fit_content = true
-scroll_active = false
-autowrap_mode = 0
-
-[node name="TargetT_Value" type="HSlider" parent="HBoxContainer/MarginContainer/MarginContainer/SimpleExample/Controls/GridContainer" unique_id=1206012361]
-layout_mode = 2
-size_flags_horizontal = 3
-max_value = 1.0
-step = 0.0
-
-[node name="PingPongHeader" type="RichTextLabel" parent="HBoxContainer/MarginContainer/MarginContainer/SimpleExample/Controls/GridContainer" unique_id=1801050436]
-layout_mode = 2
-text = "Ping Pong"
-fit_content = true
-scroll_active = false
-autowrap_mode = 0
-
-[node name="Control" type="HBoxContainer" parent="HBoxContainer/MarginContainer/MarginContainer/SimpleExample/Controls/GridContainer" unique_id=1417880637]
-layout_mode = 2
-
-[node name="CheckButton" type="CheckButton" parent="HBoxContainer/MarginContainer/MarginContainer/SimpleExample/Controls/GridContainer/Control" unique_id=1787539637 node_paths=PackedStringArray("target")]
-layout_mode = 2
-script = ExtResource("1_1yryy")
-target = NodePath("../../../../LayoutEaser")
-
-[node name="Spacer" type="Control" parent="HBoxContainer/MarginContainer/MarginContainer/SimpleExample/Controls/GridContainer/Control" unique_id=1901393525]
-layout_mode = 2
-
-[node name="PingPongSpeedHeader" type="RichTextLabel" parent="HBoxContainer/MarginContainer/MarginContainer/SimpleExample/Controls/GridContainer" unique_id=1087759069]
-layout_mode = 2
-text = "Ping Pong Speed"
-fit_content = true
-scroll_active = false
-autowrap_mode = 0
-
-[node name="PingPongSpeed" type="HSlider" parent="HBoxContainer/MarginContainer/MarginContainer/SimpleExample/Controls/GridContainer" unique_id=1363554855]
-layout_mode = 2
-size_flags_horizontal = 3
-min_value = 0.01
-max_value = 2.0
-step = 0.0
-value = 1.0
-
-[node name="LayoutEaser" type="Control" parent="HBoxContainer/MarginContainer/MarginContainer/SimpleExample" unique_id=1230339425 node_paths=PackedStringArray("_subject", "_expanded_layout", "_collapsed_layout")]
+[node name="LayoutEaser" type="Control" parent="HBoxContainer/SimpleExample/MarginContainer/Content" unique_id=1230339425 node_paths=PackedStringArray("_subject", "_expanded_layout", "_collapsed_layout")]
 layout_mode = 2
 size_flags_vertical = 3
 script = ExtResource("1_b0nom")
@@ -146,14 +117,14 @@ _subject = NodePath("Subject")
 _expanded_layout = NodePath("Expanded")
 _collapsed_layout = NodePath("Collapsed")
 _transition_curve = SubResource("Curve_1yryy")
-current_t = 0.827
+current_t = 0.777
 _debug_draw = true
 _collapsed_layout_debug_draw_params = SubResource("Resource_geilv")
 _expanded_layout_debug_draw_params = SubResource("Resource_ly6mr")
 _subject_debug_draw_params = SubResource("Resource_hwk72")
 metadata/_custom_type_script = "uid://deytcinju0n26"
 
-[node name="Collapsed" type="ColorRect" parent="HBoxContainer/MarginContainer/MarginContainer/SimpleExample/LayoutEaser" unique_id=93417526]
+[node name="Collapsed" type="ColorRect" parent="HBoxContainer/SimpleExample/MarginContainer/Content/LayoutEaser" unique_id=93417526]
 layout_mode = 0
 offset_left = 81.0
 offset_top = 60.0
@@ -161,7 +132,7 @@ offset_right = 251.0
 offset_bottom = 154.0
 color = Color(0, 0, 0, 1)
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/MarginContainer/MarginContainer/SimpleExample/LayoutEaser/Collapsed" unique_id=1285590943]
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/SimpleExample/MarginContainer/Content/LayoutEaser/Collapsed" unique_id=1285590943]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -169,13 +140,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/MarginContainer/MarginContainer/SimpleExample/LayoutEaser/Collapsed/MarginContainer" unique_id=145764622]
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/SimpleExample/MarginContainer/Content/LayoutEaser/Collapsed/MarginContainer" unique_id=145764622]
 layout_mode = 2
 bbcode_enabled = true
 text = "[color=blue]Collapsed[/color]"
 scroll_active = false
 
-[node name="Expanded" type="ColorRect" parent="HBoxContainer/MarginContainer/MarginContainer/SimpleExample/LayoutEaser" unique_id=1186974631]
+[node name="Expanded" type="ColorRect" parent="HBoxContainer/SimpleExample/MarginContainer/Content/LayoutEaser" unique_id=1186974631]
 layout_mode = 0
 offset_left = 465.0
 offset_top = 369.0
@@ -183,7 +154,7 @@ offset_right = 635.0
 offset_bottom = 463.0
 color = Color(0, 0, 0, 1)
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/MarginContainer/MarginContainer/SimpleExample/LayoutEaser/Expanded" unique_id=92761616]
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/SimpleExample/MarginContainer/Content/LayoutEaser/Expanded" unique_id=92761616]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -191,21 +162,21 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/MarginContainer/MarginContainer/SimpleExample/LayoutEaser/Expanded/MarginContainer" unique_id=2002817017]
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/SimpleExample/MarginContainer/Content/LayoutEaser/Expanded/MarginContainer" unique_id=2002817017]
 layout_mode = 2
 bbcode_enabled = true
 text = "[color=green]Expanded[/color]"
 scroll_active = false
 
-[node name="Subject" type="ColorRect" parent="HBoxContainer/MarginContainer/MarginContainer/SimpleExample/LayoutEaser" unique_id=1492467106]
+[node name="Subject" type="ColorRect" parent="HBoxContainer/SimpleExample/MarginContainer/Content/LayoutEaser" unique_id=1492467106]
 layout_mode = 0
-offset_left = 434.4983
-offset_top = 344.4557
-offset_right = 604.4983
-offset_bottom = 438.4557
+offset_left = 416.22897
+offset_top = 329.75452
+offset_right = 586.229
+offset_bottom = 423.75452
 color = Color(0, 0, 0, 1)
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/MarginContainer/MarginContainer/SimpleExample/LayoutEaser/Subject" unique_id=128318492]
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/SimpleExample/MarginContainer/Content/LayoutEaser/Subject" unique_id=128318492]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -213,10 +184,237 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/MarginContainer/MarginContainer/SimpleExample/LayoutEaser/Subject/MarginContainer" unique_id=644432116]
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/SimpleExample/MarginContainer/Content/LayoutEaser/Subject/MarginContainer" unique_id=644432116]
 layout_mode = 2
 text = "Subject"
 scroll_active = false
 
-[connection signal="value_changed" from="HBoxContainer/MarginContainer/MarginContainer/SimpleExample/Controls/GridContainer/TargetT_Value" to="HBoxContainer/MarginContainer/MarginContainer/SimpleExample/LayoutEaser" method="set_target"]
-[connection signal="value_changed" from="HBoxContainer/MarginContainer/MarginContainer/SimpleExample/Controls/GridContainer/PingPongSpeed" to="HBoxContainer/MarginContainer/MarginContainer/SimpleExample/Controls/GridContainer/Control/CheckButton" method="set_speed"]
+[node name="DynamicExample" type="MarginContainer" parent="HBoxContainer" unique_id=80586361]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Background" type="ColorRect" parent="HBoxContainer/DynamicExample" unique_id=1404006823]
+layout_mode = 2
+color = Color(1, 1, 1, 0.19607843)
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/DynamicExample" unique_id=1022845230]
+layout_mode = 2
+
+[node name="Content" type="VBoxContainer" parent="HBoxContainer/DynamicExample/MarginContainer" unique_id=166538084]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Header" type="RichTextLabel" parent="HBoxContainer/DynamicExample/MarginContainer/Content" unique_id=1101367143]
+layout_mode = 2
+bbcode_enabled = true
+text = "[b]Dynamic Example[/b]"
+fit_content = true
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/DynamicExample/MarginContainer/Content" unique_id=918303651]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/DynamicExample/MarginContainer/Content/MarginContainer" unique_id=301137658]
+layout_mode = 2
+bbcode_enabled = true
+text = "[color=#999]Curve: SmoothStep"
+fit_content = true
+scroll_active = false
+
+[node name="StartEaserControlsHeader" type="RichTextLabel" parent="HBoxContainer/DynamicExample/MarginContainer/Content" unique_id=2071653918]
+layout_mode = 2
+bbcode_enabled = true
+text = "Start Easer"
+fit_content = true
+
+[node name="LayoutEaserControlPanel" parent="HBoxContainer/DynamicExample/MarginContainer/Content" unique_id=1822485511 node_paths=PackedStringArray("target") instance=ExtResource("1_geilv")]
+layout_mode = 2
+target = NodePath("../View/Objects/StartEaser")
+
+[node name="MainEaserControlsHeader" type="RichTextLabel" parent="HBoxContainer/DynamicExample/MarginContainer/Content" unique_id=1686571502]
+layout_mode = 2
+bbcode_enabled = true
+text = "Main Easer"
+fit_content = true
+
+[node name="MainEaserControlPanel" parent="HBoxContainer/DynamicExample/MarginContainer/Content" unique_id=1732235813 node_paths=PackedStringArray("target") instance=ExtResource("1_geilv")]
+layout_mode = 2
+target = NodePath("../View/Objects/SubjectEaser")
+
+[node name="View" type="Control" parent="HBoxContainer/DynamicExample/MarginContainer/Content" unique_id=1683309110]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ColorRect" type="ColorRect" parent="HBoxContainer/DynamicExample/MarginContainer/Content/View" unique_id=1418167389]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.078431375)
+
+[node name="Objects" type="MarginContainer" parent="HBoxContainer/DynamicExample/MarginContainer/Content/View" unique_id=1061052842]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+
+[node name="StartEaser" type="Control" parent="HBoxContainer/DynamicExample/MarginContainer/Content/View/Objects" unique_id=1931103795 node_paths=PackedStringArray("_subject", "_expanded_layout", "_collapsed_layout")]
+layout_mode = 2
+script = ExtResource("1_b0nom")
+_subject = NodePath("../Objects/StartSubject")
+_expanded_layout = NodePath("../Objects/StartEnd")
+_collapsed_layout = NodePath("../Objects/StartStart")
+_transition_curve = SubResource("Curve_ly6mr")
+current_t = 0.506
+_debug_draw = true
+_collapsed_layout_debug_draw_params = SubResource("Resource_1yryy")
+_expanded_layout_debug_draw_params = SubResource("Resource_3gitv")
+_subject_debug_draw_params = SubResource("Resource_yw0np")
+metadata/_custom_type_script = "uid://deytcinju0n26"
+
+[node name="SubjectEaser" type="Control" parent="HBoxContainer/DynamicExample/MarginContainer/Content/View/Objects" unique_id=1356672191 node_paths=PackedStringArray("_subject", "_expanded_layout", "_collapsed_layout")]
+layout_mode = 2
+script = ExtResource("1_b0nom")
+_subject = NodePath("../Objects/Subject")
+_expanded_layout = NodePath("../Objects/StartSubject")
+_collapsed_layout = NodePath("../Objects/End")
+_transition_curve = SubResource("Curve_geilv")
+current_t = 0.478
+_debug_draw = true
+_collapsed_layout_debug_draw_params = SubResource("Resource_1yryy")
+_expanded_layout_debug_draw_params = SubResource("Resource_3gitv")
+_subject_debug_draw_params = SubResource("Resource_yw0np")
+metadata/_custom_type_script = "uid://deytcinju0n26"
+
+[node name="Objects" type="Control" parent="HBoxContainer/DynamicExample/MarginContainer/Content/View/Objects" unique_id=852077774]
+layout_mode = 2
+
+[node name="StartStart" type="ColorRect" parent="HBoxContainer/DynamicExample/MarginContainer/Content/View/Objects/Objects" unique_id=800191864]
+layout_mode = 1
+offset_right = 150.0
+offset_bottom = 100.0
+color = Color(0, 0, 0, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/DynamicExample/MarginContainer/Content/View/Objects/Objects/StartStart" unique_id=476668547]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/DynamicExample/MarginContainer/Content/View/Objects/Objects/StartStart/MarginContainer" unique_id=1089698627]
+layout_mode = 2
+bbcode_enabled = true
+text = "[color=blue]Start Start[/color]"
+scroll_active = false
+
+[node name="StartEnd" type="ColorRect" parent="HBoxContainer/DynamicExample/MarginContainer/Content/View/Objects/Objects" unique_id=918199388]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -100.0
+offset_right = 150.0
+grow_vertical = 0
+color = Color(0, 0, 0, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/DynamicExample/MarginContainer/Content/View/Objects/Objects/StartEnd" unique_id=1983813941]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/DynamicExample/MarginContainer/Content/View/Objects/Objects/StartEnd/MarginContainer" unique_id=1732759794]
+layout_mode = 2
+bbcode_enabled = true
+text = "[color=green]Start End[/color]"
+scroll_active = false
+
+[node name="StartSubject" type="ColorRect" parent="HBoxContainer/DynamicExample/MarginContainer/Content/View/Objects/Objects" unique_id=415683805]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5089996
+anchor_bottom = 0.5089996
+offset_top = -50.899933
+offset_right = 150.0
+offset_bottom = 49.100067
+grow_vertical = 0
+color = Color(0, 0, 0, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/DynamicExample/MarginContainer/Content/View/Objects/Objects/StartSubject" unique_id=1548378122]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/DynamicExample/MarginContainer/Content/View/Objects/Objects/StartSubject/MarginContainer" unique_id=1670662336]
+layout_mode = 2
+bbcode_enabled = true
+text = "[color=white]Start Subject[/color]"
+scroll_active = false
+
+[node name="End" type="ColorRect" parent="HBoxContainer/DynamicExample/MarginContainer/Content/View/Objects/Objects" unique_id=1574309407]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -50.0
+offset_bottom = 50.0
+grow_horizontal = 0
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/DynamicExample/MarginContainer/Content/View/Objects/Objects/End" unique_id=1976273935]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/DynamicExample/MarginContainer/Content/View/Objects/Objects/End/MarginContainer" unique_id=685764626]
+layout_mode = 2
+bbcode_enabled = true
+text = "[color=blue]End[/color]"
+scroll_active = false
+
+[node name="Subject" type="ColorRect" parent="HBoxContainer/DynamicExample/MarginContainer/Content/View/Objects/Objects" unique_id=56391508]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5329787
+anchor_top = 0.504203
+anchor_right = 0.5329787
+anchor_bottom = 0.504203
+offset_left = -79.94681
+offset_top = -50.42032
+offset_right = 70.05319
+offset_bottom = 49.57968
+grow_vertical = 0
+color = Color(0, 0, 0, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/DynamicExample/MarginContainer/Content/View/Objects/Objects/Subject" unique_id=9730432]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/DynamicExample/MarginContainer/Content/View/Objects/Objects/Subject/MarginContainer" unique_id=1853272499]
+layout_mode = 2
+bbcode_enabled = true
+text = "[color=green]Subject[/color]"
+scroll_active = false

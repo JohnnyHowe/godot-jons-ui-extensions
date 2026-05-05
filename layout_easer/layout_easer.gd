@@ -12,9 +12,9 @@ const _DebugDrawer := preload("./layout_easer_debug_drawer.gd")
 @export var _expanded_layout: Control
 @export var _collapsed_layout: Control
 
-@export var _transition_time: float
+@export var _transition_time: float = 1
 @export var _transition_curve: Curve
-@export var _start_expanded: bool
+@export var _start_expanded: bool = false
 
 
 @export_range(0, 1) var current_t: float:
@@ -42,9 +42,9 @@ const _DebugDrawer := preload("./layout_easer_debug_drawer.gd")
 )
 @warning_ignore_restore("UNUSED_PRIVATE_CLASS_VARIABLE")
 
-var _target_t: float:
+var target_t: float:
 	set(value):
-		_target_t = clamp(value, 0, 1)
+		target_t = clamp(value, 0, 1)
 
 var _debug_draw_node: _DebugDrawer
 
@@ -59,13 +59,9 @@ func _ready() -> void:
 		collapse_instant.call_deferred()
 
 
-func set_target(t: float) -> void:
-	_target_t = t
-
-
 ## Starts an animated transition toward the expanded layout.
 func expand() -> void:
-	_target_t = 1
+	target_t = 1
 
 
 ## Immediately snaps the subject to the expanded layout.
@@ -75,7 +71,7 @@ func expand_instant() -> void:
 
 ## Starts an animated transition toward the collapsed layout.
 func collapse() -> void:
-	_target_t = 0
+	target_t = 0
 
 
 ## Immediately snaps the subject to the collapsed layout.
@@ -84,7 +80,7 @@ func collapse_instant() -> void:
 
 
 func _instant_set_t(value: float) -> void:
-	_target_t = value
+	target_t = value
 	current_t = value
 
 
@@ -103,8 +99,8 @@ func _process(delta: float) -> void:
 func _step_current_t(delta: float) -> void:
 	var normalized_delta = delta / _transition_time
 
-	var change_sign: int = -1 if _target_t < current_t else 1
-	var max_t_change: float = abs(_target_t - current_t)
+	var change_sign: int = -1 if target_t < current_t else 1
+	var max_t_change: float = abs(target_t - current_t)
 
 	current_t += change_sign * min(max_t_change, normalized_delta)
 

@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://clau2a68v8404"]
+
+[ext_resource type="Script" uid="uid://bnuqxmnradkou" path="res://addons/jons-ui-extensions/layout_easer/example/layout_easer_control_panel.gd" id="1_wu7gn"]
+
+[node name="LayoutEaserControlPanel" type="MarginContainer" unique_id=1422768252 node_paths=PackedStringArray("target_t", "current_t", "pingpong", "pingpong_speed")]
+offset_right = 180.0
+offset_bottom = 78.0
+script = ExtResource("1_wu7gn")
+target_t = NodePath("GridContainer/TargetT_Value")
+current_t = NodePath("GridContainer/CurrentT_Value")
+pingpong = NodePath("GridContainer/Control/CheckButton")
+pingpong_speed = NodePath("GridContainer/PingPongSpeed")
+
+[node name="GridContainer" type="GridContainer" parent="." unique_id=1034150921]
+layout_mode = 2
+columns = 2
+
+[node name="TargetT_Header" type="RichTextLabel" parent="GridContainer" unique_id=542606061]
+layout_mode = 2
+text = "Target T"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="TargetT_Value" type="HSlider" parent="GridContainer" unique_id=527319496]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.0
+value = 0.5
+
+[node name="CurrentT_Header" type="RichTextLabel" parent="GridContainer" unique_id=476911885]
+layout_mode = 2
+text = "Current T"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="CurrentT_Value" type="HSlider" parent="GridContainer" unique_id=728881947]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.0
+value = 0.5
+
+[node name="PingPongHeader" type="RichTextLabel" parent="GridContainer" unique_id=754200576]
+layout_mode = 2
+text = "Ping Pong"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Control" type="HBoxContainer" parent="GridContainer" unique_id=723492625]
+layout_mode = 2
+
+[node name="CheckButton" type="CheckButton" parent="GridContainer/Control" unique_id=467726232]
+layout_mode = 2
+
+[node name="Spacer" type="Control" parent="GridContainer/Control" unique_id=2056020665]
+layout_mode = 2
+
+[node name="PingPongSpeedHeader" type="RichTextLabel" parent="GridContainer" unique_id=907339010]
+layout_mode = 2
+text = "Ping Pong Speed"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="PingPongSpeed" type="HSlider" parent="GridContainer" unique_id=1853785244]
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 0.01
+max_value = 2.0
+step = 0.0
+value = 0.2
+
+[connection signal="value_changed" from="GridContainer/PingPongSpeed" to="GridContainer/Control/CheckButton" method="set_speed"]
