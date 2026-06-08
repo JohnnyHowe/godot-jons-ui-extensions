@@ -1,7 +1,11 @@
 [gd_scene format=3 uid="uid://dr1mqcg81r3ok"]
 
 [ext_resource type="Script" uid="uid://cgp31gubmdold" path="res://addons/jons-ui-extensions/control_size_copier/src/control_size_copier.gd" id="1_1qnqg"]
-[ext_resource type="Script" uid="uid://b4gip3a8wcv7c" path="res://addons/jons-ui-extensions/outline_rect/src/fancy_outline_rect.gd" id="2_dftsl"]
+[ext_resource type="Script" uid="uid://cpqpai61s8vww" path="res://addons/jons-ui-extensions/outline_rect/src/dashed_outline_rect/dashed_outline_rect.gd" id="2_o4wnw"]
+[ext_resource type="Script" uid="uid://dj77iptrgyvt0" path="res://addons/jons-ui-extensions/outline_rect/src/dashed_outline_rect/dashed_outline_rect_params.gd" id="3_ihbw5"]
+
+[sub_resource type="Resource" id="Resource_n7q88"]
+script = ExtResource("3_ihbw5")
 
 [node name="Example" type="Control" unique_id=1438589609]
 layout_mode = 3
@@ -50,30 +54,28 @@ color = Color(1.9492954e-06, 0.59182423, 9.62615e-07, 1)
 [node name="ControlSizeCopier" type="Control" parent="." unique_id=849262270 node_paths=PackedStringArray("_other")]
 z_index = 1
 anchors_preset = 0
-offset_left = 100.0
-offset_top = 218.0
-offset_right = 441.0
-offset_bottom = 465.0
+offset_left = 382.0
+offset_top = 265.0
+offset_right = 723.0
+offset_bottom = 512.0
 script = ExtResource("1_1qnqg")
 _other = NodePath("../ToCopy")
 metadata/_custom_type_script = "uid://cgp31gubmdold"
 
-[node name="FancyOutlineRect" type="Control" parent="ControlSizeCopier" unique_id=1244022844]
+[node name="FancyOutlineRect" type="Control" parent="ControlSizeCopier" unique_id=493795587]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("2_dftsl")
-dash_size = 4.0
-gap_size = 2.0
-scroll_speed = 10.0
-metadata/_custom_type_script = "uid://b4gip3a8wcv7c"
+script = ExtResource("2_o4wnw")
+draw_params = SubResource("Resource_n7q88")
+metadata/_custom_type_script = "uid://cpqpai61s8vww"
 
 [node name="ToCopy" type="ColorRect" parent="." unique_id=456178490]
 layout_mode = 0
-offset_left = 100.0
-offset_top = 218.0
-offset_right = 441.0
-offset_bottom = 465.0
+offset_left = 382.0
+offset_top = 265.0
+offset_right = 723.0
+offset_bottom = 512.0
