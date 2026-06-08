@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://btmy0qpuo17g8"]
+
+[ext_resource type="Script" uid="uid://caqled5i2qk0b" path="res://addons/jons-ui-extensions/outline_rect/src/debug_outline_rect.gd" id="3_j578i"]
+[ext_resource type="Script" uid="uid://cu8i4xogdkhej" path="res://addons/jons-ui-extensions/juicy_visibility_container/example/juicy_visibility_container.gd" id="4_apt3f"]
+
+
+[node name="Example" type="Control" unique_id=1506794042]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="JuicyVisibilityContainer" type="MarginContainer" parent="." unique_id=170171957]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+script = ExtResource("4_apt3f")
+metadata/_custom_type_script = "uid://cu8i4xogdkhej"
+
+[node name="DebugOutlineRect" type="Control" parent="JuicyVisibilityContainer" unique_id=673068727]
+layout_mode = 2
+script = ExtResource("3_j578i")
+outline_color = Color(0.16181748, 0.10028752, 0.2868647, 1)
+fill_color = Color(0.32945397, 0.28023002, 0.42949176, 1)
+metadata/_custom_type_script = "uid://caqled5i2qk0b"
