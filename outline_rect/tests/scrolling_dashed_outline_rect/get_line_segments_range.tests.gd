@@ -19,8 +19,8 @@ func test_smallScroll_resultsIn_boundedSegments():
 	)
 
 
-func _get_test_result(expected: Array[Array], actual: Array[Array]) -> ScriptTestResult:
-	return ScriptTestResult.from_equals(
+func _get_test_result(expected: Array[Array], actual: Array[Array]) -> TestCaseResult:
+	return TestCaseResult.from_equals(
 		expected, 
 		actual,
 		"Items differ",

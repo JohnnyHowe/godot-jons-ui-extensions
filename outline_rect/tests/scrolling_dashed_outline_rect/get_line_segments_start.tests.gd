@@ -33,8 +33,8 @@ func test_nonFactorSegment_scrollAlmostSegmentSize_resultsIn_twoSegments():
 	)
 
 
-func _get_test_result(expected: Array, actual: Array) -> ScriptTestResult:
-	return ScriptTestResult.from_equals(
+func _get_test_result(expected: Array, actual: Array) -> TestCaseResult:
+	return TestCaseResult.from_equals(
 		expected, 
 		actual,
 		"Items differ",
