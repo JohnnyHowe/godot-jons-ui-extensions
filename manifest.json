@@ -1,0 +1,9 @@
+{
+	"name": "jons-ui-extensions",
+	"dependencies": {
+		"gdscript-script-test-runner": {
+			"url": null,
+			"revision": null
+		}
+	}
+}
