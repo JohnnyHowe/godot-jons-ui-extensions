@@ -2,7 +2,7 @@
 	"name": "jons-ui-extensions",
 	"dependencies": {
 		"gdscript-script-test-runner": {
-			"url": null,
+			"url": "https://github.com/JohnnyHowe/gdscript-script-test-runner.git",
 			"revision": null
 		}
 	}
